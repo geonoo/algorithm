@@ -1,3 +1,6 @@
+import itertools
+
+
 def logestPalindrome(s: str) -> str:
     def expand(left: int, right: int) -> str:
         # 팰린드롬 여부를 체크하며 포인터 확장
@@ -17,20 +20,3 @@ def logestPalindrome(s: str) -> str:
 
     return result
 
-
-#print(logestPalindrome('babad'))
-
-
-def logestPalindrome(s):
-    list = []
-    for idx1, val1 in enumerate(s):
-        for idx2, val2 in enumerate(s[::-1]):
-            if val1 == val2 and idx1 != len(s)-1-idx2:
-                # print(idx1, val1)
-                # print(len(s)-1-idx2, val2)
-                # print(s[min(idx1,len(s)-1-idx2):max(idx1,len(s)-1-idx2)+1])
-                list.append(s[min(idx1,len(s)-1-idx2):max(idx1,len(s)-1-idx2)+1])
-    return max(set(list), key=len)
-
-
-print(logestPalindrome('babad'))
