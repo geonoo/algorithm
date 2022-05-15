@@ -20,3 +20,6 @@ def logestPalindrome(s: str) -> str:
 
     return result
 
+
+print(logestPalindrome('babad'))
+

@@ -15,7 +15,7 @@ def threeSum2(nums: List[int]):
     return rtn
 
 
-# print(threeSum([-1,0,1,2,-1,4]))
+print(threeSum2([-1,0,1,2,-1,4]))
 
 
 

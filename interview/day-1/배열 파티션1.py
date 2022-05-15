@@ -13,8 +13,9 @@ def array_pair_sum(nums: List[int]) -> int:
     for i, n in enumerate(nums):
         # 짝수 번째 값의 계산
         if i % 2 == 0:
+            print(n)
             sum += n
     return sum
 
 
-print(array_pair_sum([6,2,6,5,1,2]))
+print(array_pair_sum([1,4,3,2]))
