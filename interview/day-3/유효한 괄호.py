@@ -22,8 +22,33 @@ def isValid(s: str) -> bool:
 
     return not stack
 
-
-
-
-
 print(isValid("(){}[]"))
+
+
+
+
+def isValid2(s: str) -> bool:
+    stack = []
+    default = {
+        ')':'(',
+        ']':'[',
+        '}':'{'
+    }
+    open = "([{"
+    for char in s:
+        if char in open:
+            stack.append(char)
+        else:
+            if not stack:
+                return False
+            if stack.pop() != default[char]:
+                return False
+
+    return not stack
+
+print(isValid2("(){}[]"))
+
+
+# Input: s = "()"
+# Input: s = "()[]{}"
+# Input: s = "(]"
