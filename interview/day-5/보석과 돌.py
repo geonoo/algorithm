@@ -15,7 +15,7 @@ def numJewelsInStones1(jewels: str, stones: str) -> int:
     cnt = 0
     # 돌에있는 값들로 for문을 돌릴건데
     for s in stones:
-        # 값중에 보석안에 존재하는 값이면 카운팅
+        # 값중에 보석안에 존재하는 값이면 카운
         if s in jewels:
             cnt+=1
 
@@ -27,7 +27,7 @@ def numJewelsInStones1(jewels: str, stones: str) -> int:
 # 리트코드에 제출 했을 때, 36 ms	13.9 MB
 
 
-# 딕셔너리 이용한 풀이
+# 해시 테이블을 이용한 풀이
 def numJewelsInStones2(jewels: str, stones: str) -> int:
     freqs = {}
     count = 0
@@ -43,7 +43,7 @@ def numJewelsInStones2(jewels: str, stones: str) -> int:
 
     for j in jewels:
         if j in freqs:
-            # 보석에서 뽑은 값을 키로 딕셔너리에있는 빈도수 값을 더해줘서 구하는 문제
+            # 체크해준 비도 수랑 보석이랑 비교해서 카운팅 하는 방법
             count += freqs[j]
 
     return count
@@ -77,15 +77,33 @@ def numJewelsInStones3(jewels: str, stones: str) -> int:
 ##리트코드에 제출 했을 때, 60ms	13.8MB
 
 
-# 파이썬 다운 방식
+#Counter로 계산 생략
 def numJewelsInStones4(jewels: str, stones: str) -> int:
+    freqs = collections.Counter(stones)
+    # print(freqs)
+    # Counter({'b': 4, 'A': 2, 'a': 1})
+    count = 0
+
+    for j in jewels:
+        count += freqs[j]
+
+    return count
+
+# jewels = "aA"
+# stones = "aAAbbbb"
+# print(numJewelsInStones4(jewels, stones))
+
+
+
+# 파이썬 다운 방식
+def numJewelsInStones5(jewels: str, stones: str) -> int:
 
     # lst = [s in jewels for s in stones]
     # print(lst)
     # [True, True, True, False, False, False, False]
     return sum(s in jewels for s in stones)
 
-jewels = "aA"
-stones = "aAAbbbb"
-print(numJewelsInStones4(jewels, stones))
+# jewels = "aA"
+# stones = "aAAbbbb"
+# print(numJewelsInStones5(jewels, stones))
 

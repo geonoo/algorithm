@@ -7,18 +7,13 @@ class Node:
 
 class MyHashMap:
     def __init__(self):
-        """
-        Initialize your data structure here.
-        """
         # 길이가 1,000,000인 배열을 만드는 것이 아니라 1,000인 배열을 만들어서 해결해보자!
         self.map_size = 2
+        # 변수 없이 반복문 실행
         self.map = [None for _ in range(self.map_size)]
 
 
     def put(self, key: int, value: int) -> None:
-        """
-        value will always be non-negative.
-        """
         # hash function을 통과한 값 (modulo-division method)
         key_value = key % self.map_size
 
@@ -37,9 +32,6 @@ class MyHashMap:
             cur_node.next = Node(key, value)
 
     def get(self, key: int) -> int:
-        """
-        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
-        """
         # hash function 통과
         key_value = key % self.map_size
 
@@ -54,9 +46,6 @@ class MyHashMap:
             return -1
 
     def remove(self, key: int) -> None:
-        """
-        Removes the mapping of the specified value key if this map contains a mapping for the key
-        """
         # hash function 통과
         key_value = key % self.map_size
 
