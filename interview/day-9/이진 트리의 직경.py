@@ -14,23 +14,22 @@ def make_tree_by(lst, idx):
 
         parent = TreeNode(value)
         parent.left = make_tree_by(lst, 2 * idx + 1)
-        parent.left = make_tree_by(lst, 2 * idx + 2)
+        parent.right = make_tree_by(lst, 2 * idx + 2)
 
     return parent
 
 longest = 0
 root = make_tree_by([1,2,3,4,5],0)
-def diameterOfBinaryTree(root: TreeNode) -> int:
-    def dfs(node:TreeNode):
+def diameterOfBinaryTree(roots: TreeNode) -> int:
+    def dfs(node: TreeNode):
         global longest
         if not node:
             return -1
-
         left = dfs(node.left)
         right = dfs(node.right)
+        longest = max(longest, left + right + 2)
+        return max(left, right) + 1
 
-        longest = max(longest, left+right+2)
-        return max(right,left)+1
     dfs(root)
     return longest
 print(diameterOfBinaryTree(root))
