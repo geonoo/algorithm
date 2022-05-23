@@ -7,9 +7,21 @@ class TreeNode:
         self.left = left
         self.right = right
 
+def make_tree(lst, idx):
+    parent = None
+    if idx < len(lst):
+        value = lst[idx]
+        if value == None:
+            return
+
+        parent = TreeNode(value)
+        parent.left = make_tree(lst, 2*idx+1)
+        parent.right = make_tree(lst, 2*idx+2)
+
+    return parent
 
 def maxDepth(lst) -> int:
-    root = make_tree_by(lst, 0)
+    root = make_tree(lst, 0)
     if not root:
         return 0
 
@@ -26,18 +38,5 @@ def maxDepth(lst) -> int:
                 q.append(cur.right)
 
     return depth
-
-def make_tree_by(lst, idx):
-    parent = None
-    if idx < len(lst):
-        value = lst[idx]
-        if value == None:
-            return
-
-        parent = TreeNode(value)
-        parent.left = make_tree_by(lst, 2 * idx + 1)
-        parent.left = make_tree_by(lst, 2 * idx + 2)
-
-    return parent
 
 print(maxDepth([3,9,20,None,None,15,7]))
