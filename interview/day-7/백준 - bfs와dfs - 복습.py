@@ -9,12 +9,14 @@ for _ in range(m):
 print(lst)
 
 def dfs(start, visited=[]):
-    print(start, end=' ')
+    if start == 0:
+        return
     visited.append(start)
-    for i in range(len(lst[start])):
-        if lst[start][i] == 1 and i not in visited:
-            dfs(i)
+    print(start, end=' ')
 
+    for i, v in enumerate(lst[start]):
+        if v == 1 and i not in visited:
+            dfs(i)
 
 
 def bfs(start):
@@ -22,13 +24,12 @@ def bfs(start):
     q.append(start)
     visited = [start]
     while q:
-        k = q.popleft()
-        print(k, end=' ')
-        for i in range(len(lst[start])):
-            if i not in visited and lst[k][i] == 1:
+        val = q.popleft()
+        print(val, end=' ')
+        for i in range(len(lst)):
+            if lst[val][i] == 1 and i not in visited:
                 q.append(i)
                 visited.append(i)
-
 dfs(v)
 print()
 bfs(v)
