@@ -1,12 +1,8 @@
+import heapq
 
-def abc(word):
-    c = [-1]*26
-    for i in range(len(word)):
-        idx = ord(word[i]) - 97
-        if c[idx] == -1:
-            c[idx] = i
-    print(' '.join([str(num) for num in c]))
+heap = [4, 1, 7, 3, 8, 5]
+heapq.heapify(heap)
+print(heapq.nlargest(2,heap))
+print(heapq.nsmallest(2,heap))
 
-
-abc('baekjoon')
-
+#[1, 3, 5, 4, 8, 7]
