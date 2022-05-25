@@ -42,7 +42,18 @@ def kWeakestRows3(mat: List[List[int]], k: int) -> List[int]:
 
     return ans
 
-print(kWeakestRows2([
+def kWeakestRows4(mat: List[List[int]], k: int) -> List[int]:
+    heap = []
+    ans = []
+    for i, v in enumerate(mat):
+        cnt = v.count(1)
+        heapq.heappush(heap, [cnt, i])
+
+    for _ in range(k):
+        ans.append(heapq.heappop(heap)[1])
+    return ans
+
+print(kWeakestRows4([
      [1, 1, 0, 0, 0],
      [1, 1, 1, 1, 0],
      [1, 0, 0, 0, 0],
