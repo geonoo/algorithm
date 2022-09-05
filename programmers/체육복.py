@@ -4,10 +4,19 @@ from audioop import reverse
 def solution(n, lost, reserve):
     lost.sort()
     reserve.sort()
-    lost = [i for i in lost if i not in list(set(lost) & set(reserve))]
-    reserve = [i for i in reserve if i not in list(set(lost) & set(reserve))]
+    inter = list(set(lost) & set(reserve))
+    lost = [i for i in lost if i not in inter]
+    reserve = [i for i in reserve if i not in inter]
     answer = n-len(lost)
     while n > answer and len(lost) != 0 and len(reserve) != 0:
+        # print(n > answer)
+        # print(len(lost))
+        # print(len(reserve))
+        if lost[0] == reserve[0]:
+            lost.pop(0)
+            reserve.pop(0)
+            answer += 1
+            continue
         if lost[0]+1 == reserve[0] or lost[0]-1 == reserve[0]:
             lost.pop(0)
             reserve.pop(0)
