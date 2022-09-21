@@ -9,8 +9,6 @@ def solution(participant, completion):
         if c in temp:
             temp[c] -= 1
 
-    print(temp)
-
     return max(temp, key=temp.get)
 
 print(solution(["mislav", "stanko", "mislav", "ana"],["stanko", "ana", "mislav"]))
