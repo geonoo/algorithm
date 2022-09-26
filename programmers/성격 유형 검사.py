@@ -46,7 +46,7 @@ def solution(survey, choices):
         if score['A'] >= score['N']:
             answer[3] = 'A'
         else:
-            answer[4] = 'N'
+            answer[3] = 'N'
 
     return ''.join(answer)
 
